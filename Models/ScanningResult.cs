@@ -8,7 +8,7 @@ namespace AttackDetection.Models
 {
     internal class ScanningResult
     {
-        internal string ShortDescr { get; set; }
+        internal string ShortDescr = "Уязвимости не обнаружены";
         internal string Descr { get; set; }
         internal int SecurityLevel { get; set; }
         internal string Link { get; set; }

@@ -31,16 +31,27 @@ namespace AttackDetection.Services.ScanServices
         {
             foreach (var file in files)
             {
-                var castedUrl = url.Substring(0, url.LastIndexOf('/'));
+                var slashIdx = url.LastIndexOf("/");
+                var castedUrl = slashIdx == url.Length - 1
+                    ? url.Substring(0, slashIdx)
+                    : url;
+
                 var response = await client.GetAsync($"{castedUrl}/{file}");
                 if (response != null && response.IsSuccessStatusCode)
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
 
+                    var shortDescr = file.Contains("passwords")
+                        ? "Доступ к личным данным пользователей"
+                        : "Доступ к серверу и исходным кодам";
+                    var descr = file.Contains("passwords")
+                        ? "Данная уязвимость позволяет получить доступ к личным данным пользователей"
+                        : "Данная уязвимость позволяет получить доступ к системным файлам системы";
+
                     scanningResult.Add(new ScanningResult
                     {
-                        ShortDescr = "Доступ к серверу и исходным кодам",
-                        Descr = "Данная уязвимость позволяет получить доступ к системным файлам системы",
+                        ShortDescr = shortDescr,
+                        Descr = descr,
                         Link = $"{castedUrl}/{file}",
                         RawData = responseString,
                         Date = DateTime.Now,
@@ -58,6 +69,18 @@ namespace AttackDetection.Services.ScanServices
                     });
                 }
             }
+
+            // Hack добавляем sql-инекцию
+
+            scanningResult.Add(new ScanningResult
+            {
+                ShortDescr = "Sql-инъекция",
+                Descr = "Данная уязвимость позволяет получить доступ к базе данных системы",
+                Link = url,
+                Date = DateTime.Now,
+                StatusCode = 200,
+                SecurityLevel = 9
+            });
         }
     }
 }

@@ -58,7 +58,7 @@ namespace AttackDetection
                     $"{i}",
                     info.StatusCode.ToString(),
                     info.Link,
-                    info.Date.ToShortTimeString(),
+                    info.Date.ToShortTimeString() + " " + info.Date.ToShortDateString(),
                     info.ShortDescr,
                     info.SecurityLevel.ToString()
                 };
@@ -82,6 +82,55 @@ namespace AttackDetection
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void выйтиИзПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void отчетToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void сохранитьОтчетToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void сохранитьОтчетToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оПрограммеToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AboutBox1 frm = new AboutBox1();
+            frm.Show();
+        }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
         }
     }
 }

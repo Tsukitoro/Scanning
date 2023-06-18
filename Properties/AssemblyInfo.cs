@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("AttackDetection")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Программа была разработана студенткой      гр.19-СБК Челышевой Е.О.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ВУЗ НГТУ им. Р.Е. Алексеева")]
 [assembly: AssemblyProduct("AttackDetection")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("EChelysheva©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
